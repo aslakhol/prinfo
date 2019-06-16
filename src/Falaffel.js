@@ -8,6 +8,7 @@ const apiUrl = `https://maps.googleapis.com/maps/api/js?key=${mapsApiKey}&librar
 
 const Falaffel = () => {
   const [falaffelHours, setfalaffelHours] = useState({ weekday_text: [] });
+  const [apiLoaded, setApiLoaded] = useState(false);
   const dateTime = DateTime.local();
 
   const getFalaffelHours = () => {
@@ -28,11 +29,14 @@ const Falaffel = () => {
   };
 
   useEffect(() => {
-    getFalaffelHours();
-  }, [])
+    if (apiLoaded) {
+      getFalaffelHours();
+    }
+  }, [apiLoaded])
 
   return (
     <div className="wrapper">
+      <Script onLoad={() => setApiLoaded(true)} onError={() => setApiLoaded(false)} url={apiUrl} />
       <h1>Falaffel</h1>
       <p>
         {
@@ -43,7 +47,6 @@ const Falaffel = () => {
       </p>
       <p style={{ 'textTransform': 'capitalize' }}>{falaffelHours.weekday_text[dateTime.weekday - 1]}</p>
       <div id="attrs"></div>
-      <Script url={apiUrl} />
     </div>
   );
 }
