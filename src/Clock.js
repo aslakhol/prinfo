@@ -4,8 +4,6 @@ import { DateTime } from 'luxon';
 const Clock = () => {
   const dateTime = DateTime.local().setLocale("no-bok");
 
-  console.log(dateTime.locale);
-
   return (
     <>
       <span>
