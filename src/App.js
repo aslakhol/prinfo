@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Falaffel from './Falaffel';
 import Clock from './Clock';
+import Bikes from './Bikes';
 
 const timeUrl = 'http://worldtimeapi.org/api/timezone/Europe/Oslo';
 
@@ -25,6 +26,7 @@ const App = () => {
       {/* {time.unixtime} */}
       <Clock />
       <Falaffel />
+      <Bikes />
     </div>
   )
 }
