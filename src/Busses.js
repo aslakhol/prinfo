@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import EnturService from '@entur/sdk';
+import { DateTime } from 'luxon';
 
 const service = new EnturService({ clientName: 'hollund-prinfo' })
 
 const Busses = () => {
-  const [busStop, setBusStop] = useState([])
-  const [fromCenterStop, setFromCenterStop] = useState([])
-  const [toCenterStop, setToCenterStop] = useState([])
+  const [departures, setDepartures] = useState([])
+  const [departuresFromCenter, setDeparturesFromCenter] = useState([])
+  const [departuresToCenter, setDeparturesToCenter] = useState([])
 
   const id = 'NSR:StopPlace:41613';
 
@@ -17,36 +18,48 @@ const Busses = () => {
 
   useEffect(() => {
     service.getStopPlaceDepartures(id)
-      .then(data => setBusStop(data))
+      .then(data => setDepartures(data))
   }, [])
 
   useEffect(() => {
-    const fromCenterData = busStop.filter(d => d.quay.id === fromCenter);
-    console.log(fromCenterData)
-  }, [busStop])
+    setDeparturesFromCenter(departures.filter(d => d.quay.id === fromCenter));
+    setDeparturesToCenter(departures.filter(d => d.quay.id === toCenter));
+  }, [departures])
+
   return (
     <>
       <br />
-      {busStop.slice(0, size).map(departure => (
+      <h3>Fra Sentrum</h3>
+      {departuresFromCenter.slice(0, size).map(departure => (
         <Departure key={departure.serviceJourney.id} departure={departure} />
       ))}
-      {/* {console.log(busStop.slice(0, size))} */}
-      {console.log(toCenterStop)}
+      <h3>Mot Sentrum</h3>
+      {departuresToCenter.slice(0, size).map(departure => (
+        <Departure key={departure.serviceJourney.id} departure={departure} />
+      ))}
     </>
   )
 };
 
 const Departure = (props) => {
   const { departure } = props;
-  const { destinationDisplay } = departure;
-  console.log(departure)
-  // console.log(destinationDisplay)
-
+  const { expectedDepartureTime, serviceJourney } = departure;
+  const departureTime = DateTime.fromISO(expectedDepartureTime);
+  const timeTilDeparture = calculateTimeTilDeparture(departureTime);
   return (
     <div className="departure">
-      {destinationDisplay.frontText}, {departure.quay.publicCode}
+      {serviceJourney.journeyPattern.line.publicCode} - {timeTilDeparture}
     </div>
   )
-}
+};
+
+const calculateTimeTilDeparture = departureTime => {
+  const now = DateTime.local();
+  const diff = departureTime.diff(now, 'minutes');
+  const minuteFloat = diff.toObject().minutes;
+  const flooredMinute = Math.floor(minuteFloat);
+  const semanticTimeToDeparture = flooredMinute === 0 ? 'Nå' : flooredMinute;
+  return semanticTimeToDeparture;
+};
 
 export default Busses;
