@@ -8,8 +8,8 @@ const BikeStations = () => {
   const [bikeStations, setBikeStations] = useState([])
 
   useEffect(() => {
-    service.getBikeRentalStations({latitude: 63.428311, longitude: 10.392514}, 230)
-      .then(data => setBikeStations(data))
+    service.getBikeRentalStations({ latitude: 63.428311, longitude: 10.392514 }, 230)
+      .then(data => setBikeStations(data));
   }, [])
 
   return (
@@ -22,7 +22,7 @@ const BikeStations = () => {
 };
 
 const Station = (props) => {
-  const station = props.station
+  const { station } = props;
   return (
     <div className="station">
       {station.name} - {station.bikesAvailable} : {station.spacesAvailable}
