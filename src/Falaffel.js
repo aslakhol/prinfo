@@ -3,7 +3,7 @@ import Script from 'react-load-script';
 import { DateTime } from 'luxon';
 
 const fallafelPlaceId = 'ChIJUyxTzZoxbUYRZW_wwSUIUFk'
-const mapsApiKey = 'AIzaSyAD_lsUIT8lp-Mb38PrjZWO67faXE1sh8A'
+const mapsApiKey = 'AIzaSyCGXAYCU315Z115dqgXmSA5k0Uy5nOHesY'
 const apiUrl = `https://maps.googleapis.com/maps/api/js?key=${mapsApiKey}&libraries=places&language=no`
 
 const Falaffel = () => {
