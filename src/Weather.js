@@ -30,16 +30,11 @@ const Weather = () => {
   };
 
   const createWeatherHour = segment => {
-    console.log("createWeatherHour");
-    printReadableDate(segment[0]._attributes.to);
-    printReadableDate(segment[0]._attributes.from);
-
-    const weather = {
+    return {
       temperature: segment[0].location.temperature._attributes.value,
       symbol: segment[1].location.symbol._attributes,
       precipitation: segment[1].location.precipitation._attributes.value
     };
-    return weather;
   };
 
   const createWeather = time => {
@@ -56,28 +51,11 @@ const Weather = () => {
   useEffect(() => {
     if (weatherApiResponse.weatherdata) {
       const time = weatherApiResponse.weatherdata.product.time;
-      time.slice(0, 5).map(timeInstance => console.log(timeInstance));
       setWeather(createWeather(time));
     }
   }, [weatherApiResponse]);
+
   return <div className="weather">Symbol: {weather.now.symbol.id}</div>;
 };
 
 export default Weather;
-
-const printReadableDate = timeStr => {
-  return console.log(
-    DateTime.fromISO(timeStr).toLocaleString(DateTime.TIME_24_SIMPLE)
-  );
-};
-
-const printToFromTime = timeInstance => {
-  const from = DateTime.fromISO(timeInstance._attributes.from);
-  const to = DateTime.fromISO(timeInstance._attributes.to);
-  console.log(
-    from.toLocaleString(DateTime.DATE_SHORT),
-    from.toLocaleString(DateTime.TIME_24_SIMPLE),
-    "-",
-    to.toLocaleString(DateTime.TIME_24_SIMPLE)
-  );
-};
