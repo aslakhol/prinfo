@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import convert from "xml-js";
 import { DateTime } from "luxon";
+import WeatherUnit from "./WeatherUnit";
 
 const weatherUrl =
   "https://api.met.no/weatherapi/locationforecast/1.9/?lat=63.428311&lon=10.392514";
 
 const weatherHourFormat = {
+  time: undefined,
   temperature: undefined,
   symbol: { symbol: undefined, id: undefined },
   precipitation: undefined
@@ -31,6 +33,7 @@ const Weather = () => {
 
   const createWeatherHour = segment => {
     return {
+      time: segment[0]._attributes.to,
       temperature: segment[0].location.temperature._attributes.value,
       symbol: segment[1].location.symbol._attributes,
       precipitation: segment[1].location.precipitation._attributes.value
@@ -55,7 +58,19 @@ const Weather = () => {
     }
   }, [weatherApiResponse]);
 
-  return <div className="weather">Symbol: {weather.now.symbol.id}</div>;
+  return (
+    <div className="weather">
+      <WeatherUnit class="now" weather={weather.now}></WeatherUnit>
+      <WeatherUnit
+        class="threeHFromNow"
+        weather={weather.threeHFromNow}
+      ></WeatherUnit>
+      <WeatherUnit
+        class="sixHFromNow"
+        weather={weather.sixHFromNow}
+      ></WeatherUnit>
+    </div>
+  );
 };
 
 export default Weather;
