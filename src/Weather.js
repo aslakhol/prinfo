@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import convert from "xml-js";
-import { DateTime } from "luxon";
 import WeatherUnit from "./WeatherUnit";
 
 const weatherUrl =
