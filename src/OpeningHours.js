@@ -2,20 +2,21 @@ import React, { useState, useEffect } from "react";
 import Script from "react-load-script";
 import { DateTime } from "luxon";
 
-const falafelPlaceId = "ChIJUyxTzZoxbUYRZW_wwSUIUFk";
-const nimuserPlaceId = "ChIJ4WP3fpAxbUYR0lXPGkizoww";
+// const denGodeNaboId = "ChIJnSfpw5kxbUYRrD-oYXLVPTI";
+const name = "Extra";
+const placeId = "ChIJj_IGzpoxbUYR7VCF93NHcjU";
 const mapsApiKey = "AIzaSyCGXAYCU315Z115dqgXmSA5k0Uy5nOHesY";
 const apiUrl = `https://maps.googleapis.com/maps/api/js?key=${mapsApiKey}&libraries=places&language=nb-NO`;
 
-const Falafel = () => {
-  const [falafelHours, setfalafelHours] = useState({ weekday_text: [] });
-  const [falfafelOpen, setFalafelOpen] = useState(false);
+const OpeningHours = () => {
+  const [hours, setHours] = useState({ weekday_text: [] });
+  const [open, setOpen] = useState(false);
   const [apiLoaded, setApiLoaded] = useState(false);
   const dateTime = DateTime.local();
 
-  const getFalaffelHours = () => {
+  const getHours = () => {
     const request = {
-      placeId: nimuserPlaceId, // falafelplace is broken for now, using this as replacement
+      placeId: placeId,
       fields: ["opening_hours", "utc_offset_minutes"]
     };
 
@@ -26,8 +27,8 @@ const Falafel = () => {
 
     service.getDetails(request, (place, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        setfalafelHours(place.opening_hours);
-        setFalafelOpen(place.opening_hours.isOpen());
+        setHours(place.opening_hours);
+        setOpen(place.opening_hours.isOpen());
       } else {
         console.error(status);
       }
@@ -36,7 +37,7 @@ const Falafel = () => {
 
   useEffect(() => {
     if (apiLoaded) {
-      getFalaffelHours();
+      getHours();
     }
   }, [apiLoaded]);
 
@@ -48,17 +49,13 @@ const Falafel = () => {
         url={apiUrl}
       />
       <h1>Falaffel</h1>
-      <p>
-        {falfafelOpen
-          ? "Falafelkompaniet er åpent!"
-          : "Falafelkompaniet er stengt :("}
-      </p>
+      <p>{hours ? `${name} er åpent!` : `${name} er stengt :(`}</p>
       <p style={{ textTransform: "capitalize" }}>
-        {falafelHours.weekday_text[dateTime.weekday - 1]}
+        {open.weekday_text[dateTime.weekday - 1]}
       </p>
       <div id="attrs"></div>
     </div>
   );
 };
 
-export default Falafel;
+export default OpeningHours;
