@@ -50,13 +50,19 @@ const Weather = () => {
       const timeInSix = firstTime.plus({ hour: 6 });
 
       const now = createWeatherHour(
-        times.filter(time => DateTime.fromISO(time.to).equals(firstTime))
+        times
+          .slice(0, 25)
+          .filter(time => DateTime.fromISO(time.to).equals(firstTime))
       );
       const threeHFromNow = createWeatherHour(
-        times.filter(time => DateTime.fromISO(time.to).equals(timeInThree))
+        times
+          .slice(0, 25)
+          .filter(time => DateTime.fromISO(time.to).equals(timeInThree))
       );
       const sixHFromNow = createWeatherHour(
-        times.filter(time => DateTime.fromISO(time.to).equals(timeInSix))
+        times
+          .slice(0, 25)
+          .filter(time => DateTime.fromISO(time.to).equals(timeInSix))
       );
       return { now, threeHFromNow, sixHFromNow };
     };
