@@ -1,5 +1,5 @@
 import React from "react";
-import Falaffel from "./Falaffel";
+import Falafel from "./Falafel";
 import Clock from "./Clock";
 import Bikes from "./Bikes";
 import Busses from "./Busses";
@@ -11,7 +11,7 @@ const App = () => {
     <div className="wrapper">
       {/* <ApiTime /> */}
       <Clock />
-      <Falaffel />
+      <Falafel />
       <Bikes />
       <Busses />
       <Weather />

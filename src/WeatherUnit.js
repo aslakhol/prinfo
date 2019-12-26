@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { DateTime } from "luxon";
 
 const WeatherUnit = props => {
@@ -11,8 +11,8 @@ const WeatherUnit = props => {
 
     return (
       <div className="weather">
-        <span>{readableTime}</span>
-        <span>{precipitation}mm</span>
+        <span>{readableTime} </span>
+        <span>{precipitation}mm </span>
         <img src={iconUrl} alt={symbol.id} />
         <span>{temperature}°C</span>
       </div>
