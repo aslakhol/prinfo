@@ -12,11 +12,11 @@ const App = () => {
     <div className="wrapper">
       {/* <ApiTime /> */}
       <Clock />
-      <OpeningHours />
-      <Bikes />
       <Busses />
+      <Bikes />
       <Weather />
       <DadJokes />
+      <OpeningHours />
     </div>
   );
 };

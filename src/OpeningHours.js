@@ -48,7 +48,7 @@ const OpeningHours = () => {
         onError={() => setApiLoaded(false)}
         url={apiUrl}
       />
-      <p>{hours ? `${name} er åpent!` : `${name} er stengt :(`}</p>
+      <p>{open ? `${name} er åpent!` : `${name} er stengt :(`}</p>
       <p style={{ textTransform: "capitalize" }}>
         {hours.weekday_text[dateTime.weekday - 1]}
       </p>
