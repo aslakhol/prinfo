@@ -6,9 +6,10 @@ const Clock = () => {
 
   return (
     <>
-      <span>{dateTime.toLocaleString(DateTime.TIME_24_SIMPLE)}</span>
-      <br />
-      <span>
+      <span className="time">
+        {dateTime.toLocaleString(DateTime.TIME_24_SIMPLE)}
+      </span>
+      <span className="date">
         {dateTime.toLocaleString({
           weekday: "long",
           day: "numeric",

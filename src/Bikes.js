@@ -13,11 +13,11 @@ const BikeStations = () => {
   }, []);
 
   return (
-    <>
+    <div className="bikes">
       {bikeStations.map(station => (
         <Station key={station.id} station={station} />
       ))}
-    </>
+    </div>
   );
 };
 

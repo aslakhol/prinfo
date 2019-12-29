@@ -26,17 +26,20 @@ const Busses = () => {
   }, [departures]);
 
   return (
-    <>
-      <br />
-      <h3>Fra Sentrum</h3>
-      {departuresFromCenter.slice(0, size).map(departure => (
-        <Departure key={departure.serviceJourney.id} departure={departure} />
-      ))}
-      <h3>Mot Sentrum</h3>
-      {departuresToCenter.slice(0, size).map(departure => (
-        <Departure key={departure.serviceJourney.id} departure={departure} />
-      ))}
-    </>
+    <div className="busses">
+      <div className="from">
+        <h3>Fra Sentrum</h3>
+        {departuresFromCenter.slice(0, size).map(departure => (
+          <Departure key={departure.serviceJourney.id} departure={departure} />
+        ))}
+      </div>
+      <div className="towards">
+        <h3>Mot Sentrum</h3>
+        {departuresToCenter.slice(0, size).map(departure => (
+          <Departure key={departure.serviceJourney.id} departure={departure} />
+        ))}
+      </div>
+    </div>
   );
 };
 
