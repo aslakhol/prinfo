@@ -1,4 +1,40 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: repeat(6, minmax(min-content, 1fr)); */
+}
+
+.clock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.busses {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+}
+
+p {
+  margin-top: 0px;
+}
+
+.bikes {
+  /* display: flex; */
+  /* justify-content: column; */
+  text-align: content;
+}
+
+.weather {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.joke,
+.hours,
+.weather,
+.bikes,
+.busses {
+  border: 2px solid black;
 }

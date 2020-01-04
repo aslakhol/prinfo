@@ -28,13 +28,13 @@ const Busses = () => {
   return (
     <div className="busses">
       <div className="from">
-        <h3>Fra Sentrum</h3>
+        <p>Fra Sentrum</p>
         {departuresFromCenter.slice(0, size).map(departure => (
           <Departure key={departure.serviceJourney.id} departure={departure} />
         ))}
       </div>
       <div className="towards">
-        <h3>Mot Sentrum</h3>
+        <p>Mot Sentrum</p>
         {departuresToCenter.slice(0, size).map(departure => (
           <Departure key={departure.serviceJourney.id} departure={departure} />
         ))}

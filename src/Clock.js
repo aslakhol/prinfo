@@ -5,7 +5,7 @@ const Clock = () => {
   const dateTime = DateTime.local().setLocale("nb-NO");
 
   return (
-    <>
+    <div className="clock">
       <span className="time">
         {dateTime.toLocaleString(DateTime.TIME_24_SIMPLE)}
       </span>
@@ -16,7 +16,7 @@ const Clock = () => {
           month: "long"
         })}
       </span>
-    </>
+    </div>
   );
 };
 
