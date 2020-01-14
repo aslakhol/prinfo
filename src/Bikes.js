@@ -14,6 +14,7 @@ const BikeStations = () => {
 
   return (
     <div className="bikes">
+      <h2>Bysykkel</h2>
       {bikeStations.map(station => (
         <Station key={station.id} station={station} />
       ))}

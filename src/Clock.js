@@ -6,16 +6,16 @@ const Clock = () => {
 
   return (
     <div className="clock">
-      <span className="time">
+      <h1 className="time">
         {dateTime.toLocaleString(DateTime.TIME_24_SIMPLE)}
-      </span>
-      <span className="date">
+      </h1>
+      <h1 className="date">
         {dateTime.toLocaleString({
           weekday: "long",
           day: "numeric",
           month: "long"
         })}
-      </span>
+      </h1>
     </div>
   );
 };
