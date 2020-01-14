@@ -11,10 +11,10 @@ const WeatherUnit = props => {
 
     return (
       <div className="weather-unit">
-        <span>{readableTime} </span>
-        <span>{precipitation}mm </span>
-        <img src={iconUrl} alt={symbol.id} />
+        <h2>{readableTime} </h2>
         <span>{temperature}°C</span>
+        <img src={iconUrl} alt={symbol.id} />
+        <span>{precipitation}mm </span>
       </div>
     );
   } else {

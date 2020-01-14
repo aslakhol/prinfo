@@ -16,8 +16,8 @@ const App = () => {
       <Busses />
       <Bikes />
       <Weather />
-      <DadJokes />
       <OpeningHours />
+      <DadJokes />
     </div>
   );
 };
