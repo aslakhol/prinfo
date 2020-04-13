@@ -16,7 +16,7 @@ const App = () => {
       <Busses />
       <Bikes />
       <Weather />
-      {/* <OpeningHours /> */}
+      <OpeningHours />
       <DadJokes />
     </div>
   );
