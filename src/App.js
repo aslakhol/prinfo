@@ -6,6 +6,7 @@ import Busses from "./Busses";
 import Weather from "./Weather";
 import DadJokes from "./DadJokes";
 // import ApiTime from './ApiTime';
+import "./App.css";
 
 const App = () => {
   return (
@@ -15,8 +16,8 @@ const App = () => {
       <Busses />
       <Bikes />
       <Weather />
-      <DadJokes />
       <OpeningHours />
+      <DadJokes />
     </div>
   );
 };

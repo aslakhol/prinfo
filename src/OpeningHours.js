@@ -42,7 +42,7 @@ const OpeningHours = () => {
   }, [apiLoaded]);
 
   return (
-    <div className="wrapper">
+    <div className="hours">
       <Script
         onLoad={() => setApiLoaded(true)}
         onError={() => setApiLoaded(false)}

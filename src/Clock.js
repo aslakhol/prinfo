@@ -5,17 +5,18 @@ const Clock = () => {
   const dateTime = DateTime.local().setLocale("nb-NO");
 
   return (
-    <>
-      <span>{dateTime.toLocaleString(DateTime.TIME_24_SIMPLE)}</span>
-      <br />
-      <span>
+    <div className="clock">
+      <h1 className="time">
+        {dateTime.toLocaleString(DateTime.TIME_24_SIMPLE)}
+      </h1>
+      <h1 className="date">
         {dateTime.toLocaleString({
           weekday: "long",
           day: "numeric",
           month: "long"
         })}
-      </span>
-    </>
+      </h1>
+    </div>
   );
 };
 

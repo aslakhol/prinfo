@@ -19,7 +19,7 @@ const DadJokes = () => {
   }, []);
 
   return joke.title ? (
-    <div>
+    <div className="joke">
       <p>{joke.title}</p>
       <p>{joke.selftext}</p>
     </div>
