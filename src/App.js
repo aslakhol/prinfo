@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import OpeningHours from "./OpeningHours";
 import Clock from "./Clock";
 import Bikes from "./Bikes";
 import Busses from "./Busses";
 import Weather from "./Weather";
 import DadJokes from "./DadJokes";
-// import ApiTime from './ApiTime';
+// import OpeningHours from "./OpeningHours";
+// import ApiTime from "./ApiTime";
 import "./App.css";
 
 const App = () => {
@@ -33,7 +33,7 @@ const App = () => {
       <Busses />
       <Bikes />
       <Weather />
-      <OpeningHours />
+      {/* <OpeningHours /> */}
       <DadJokes />
     </div>
   );
