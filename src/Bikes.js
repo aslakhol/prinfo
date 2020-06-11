@@ -9,20 +9,20 @@ const BikeStations = () => {
   useEffect(() => {
     service
       .getBikeRentalStations({ latitude: 63.428311, longitude: 10.392514 }, 230)
-      .then(data => setBikeStations(data));
+      .then((data) => setBikeStations(data));
   }, []);
 
   return (
     <div className="bikes">
       <h2>Bysykkel</h2>
-      {bikeStations.map(station => (
+      {bikeStations.map((station) => (
         <Station key={station.id} station={station} />
       ))}
     </div>
   );
 };
 
-const Station = props => {
+const Station = (props) => {
   const { station } = props;
   return (
     <div className="station">

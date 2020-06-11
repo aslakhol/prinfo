@@ -7,9 +7,9 @@ const DadJokes = () => {
 
   const getJoke = () => {
     fetch(timeUrl)
-      .then(response => response.json())
-      .then(json => setJoke(json.data.children[0].data))
-      .catch(err => {
+      .then((response) => response.json())
+      .then((json) => setJoke(json.data.children[0].data))
+      .catch((err) => {
         console.error(err);
       });
   };

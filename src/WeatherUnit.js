@@ -1,7 +1,7 @@
 import React from "react";
 import { DateTime } from "luxon";
 
-const WeatherUnit = props => {
+const WeatherUnit = (props) => {
   if (props.weather) {
     const { symbol, precipitation, temperature, time } = props.weather;
     const iconUrl = `https://api.met.no/weatherapi/weathericon/1.1/?symbol=${symbol.number}&content_type=image/png`;
