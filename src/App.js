@@ -6,7 +6,7 @@ import Weather from "./Weather";
 // import OpeningHours from "./OpeningHours";
 // import ApiTime from "./ApiTime";
 import "./App.css";
-import APIControlContextProvider from "./APIControlContextProvider";
+import APIControlContextProvider from "./APIControl";
 import ControlledDadJokes from "./ControlledDadJokes";
 
 const App = () => {

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
+export const APIRefreshDelay = 3000;
+
 export const APIControlContext = React.createContext(1);
 
 const APIControlContextProvider = (props) => {
   const [refresh, setRefresh] = useState(1);
-  const APIRefreshDelay = 3000;
 
   const refreshAPIData = () => {
     console.log("refresh data called");
