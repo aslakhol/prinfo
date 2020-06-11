@@ -3,39 +3,28 @@ import Clock from "./Clock";
 import Bikes from "./Bikes";
 import Busses from "./Busses";
 import Weather from "./Weather";
-import DadJokes from "./DadJokes";
 // import OpeningHours from "./OpeningHours";
 // import ApiTime from "./ApiTime";
 import "./App.css";
+import APIControlContextProvider from "./APIControlContextProvider";
+import ControlledDadJokes from "./ControlledDadJokes";
 
 const App = () => {
   const [updated, setUpdated] = useState(1);
   const APIRefreshDelay = 30000;
 
-  const refreshAPIData = () => {
-    console.log("APIs refreshed");
-
-    setUpdated((prevUpdated) => prevUpdated * -1);
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      console.log("triggered");
-      refreshAPIData();
-    }, APIRefreshDelay);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="wrapper">
-      {/* <ApiTime /> */}
-      <Clock />
-      <Busses />
-      <Bikes />
-      <Weather />
-      {/* <OpeningHours /> */}
-      <DadJokes />
-    </div>
+    <APIControlContextProvider>
+      <div className="wrapper">
+        {/* <ApiTime /> */}
+        <Clock />
+        <Busses />
+        <Bikes />
+        <Weather />
+        {/* <OpeningHours /> */}
+        <ControlledDadJokes />
+      </div>
+    </APIControlContextProvider>
   );
 };
 

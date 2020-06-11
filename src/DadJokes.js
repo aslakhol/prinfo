@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 
 const timeUrl = "https://www.reddit.com/r/dadjokes/top.json?t=day&limit=1";
 
-const DadJokes = () => {
+const DadJokes = (props) => {
   const [joke, setJoke] = useState({});
+  const { refresh } = props;
 
   const getJoke = () => {
+    console.log("getting joke");
+
     fetch(timeUrl)
       .then((response) => response.json())
       .then((json) => setJoke(json.data.children[0].data))
@@ -16,7 +19,7 @@ const DadJokes = () => {
 
   useEffect(() => {
     getJoke();
-  }, []);
+  }, [refresh]);
 
   return joke.title ? (
     <div className="joke">
