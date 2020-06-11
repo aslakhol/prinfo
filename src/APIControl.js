@@ -8,8 +8,6 @@ const APIControlContextProvider = (props) => {
   const [refresh, setRefresh] = useState(1);
 
   const refreshAPIData = () => {
-    console.log("refresh data called");
-
     setRefresh((prevRefresh) => prevRefresh * -1);
   };
 

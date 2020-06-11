@@ -6,7 +6,6 @@ const timeUrl = "http://worldtimeapi.org/api/timezone/Europe/Oslo";
 const ApiTime = () => {
   const [time, setTime] = useState({});
   const { refresh } = useContext(APIControlContext);
-  console.log("apitime rendered");
 
   const getTime = () => {
     fetch(timeUrl)

@@ -7,8 +7,6 @@ const DadJokes = (props) => {
   const { refresh } = props;
 
   const getJoke = () => {
-    console.log("getting joke");
-
     fetch(timeUrl)
       .then((response) => response.json())
       .then((json) => setJoke(json.data.children[0].data))
