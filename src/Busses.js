@@ -4,10 +4,11 @@ import { DateTime } from "luxon";
 
 const service = new EnturService({ clientName: "hollund-prinfo" });
 
-const Busses = () => {
+const Busses = (props) => {
   const [departures, setDepartures] = useState([]);
   const [departuresFromCenter, setDeparturesFromCenter] = useState([]);
   const [departuresToCenter, setDeparturesToCenter] = useState([]);
+  const { refresh } = props;
 
   const id = "NSR:StopPlace:41613";
 
@@ -18,7 +19,7 @@ const Busses = () => {
 
   useEffect(() => {
     service.getStopPlaceDepartures(id).then((data) => setDepartures(data));
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     setDeparturesFromCenter(departures.filter((d) => d.quay.id === fromCenter));

@@ -3,14 +3,15 @@ import EnturService from "@entur/sdk";
 
 const service = new EnturService({ clientName: "hollund-prinfo" });
 
-const BikeStations = () => {
+const BikeStations = (props) => {
   const [bikeStations, setBikeStations] = useState([]);
+  const { refresh } = props;
 
   useEffect(() => {
     service
       .getBikeRentalStations({ latitude: 63.428311, longitude: 10.392514 }, 230)
       .then((data) => setBikeStations(data));
-  }, []);
+  }, [refresh]);
 
   return (
     <div className="bikes">

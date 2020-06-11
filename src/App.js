@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Clock from "./Clock";
-import Bikes from "./Bikes";
-import Busses from "./Busses";
-import Weather from "./Weather";
+import ControlledBikes from "./controlled/ControlledBikes";
+import ControlledBusses from "./controlled/ControlledBusses";
+import ControlledWeather from "./controlled/ControlledWeather";
 // import OpeningHours from "./OpeningHours";
 // import ApiTime from "./ApiTime";
 import "./App.css";
@@ -18,9 +18,9 @@ const App = () => {
       <div className="wrapper">
         {/* <ApiTime /> */}
         <Clock />
-        <Busses />
-        <Bikes />
-        <Weather />
+        <ControlledBusses />
+        <ControlledBikes />
+        <ControlledWeather />
         {/* <OpeningHours /> */}
         <ControlledDadJokes />
       </div>

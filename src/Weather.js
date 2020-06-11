@@ -13,13 +13,14 @@ const weatherHourFormat = {
   precipitation: undefined,
 };
 
-const Weather = () => {
+const Weather = (props) => {
   const [weatherApiResponse, setweatherApiResponse] = useState({});
   const [weather, setWeather] = useState({
     now: weatherHourFormat,
     threeHFromNow: weatherHourFormat,
     sixHFromNow: weatherHourFormat,
   });
+  const { refresh } = props;
 
   const getWeather = () => {
     fetch(weatherUrl)
@@ -32,7 +33,7 @@ const Weather = () => {
 
   useEffect(() => {
     getWeather();
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     const createWeatherHour = (segment) => {
