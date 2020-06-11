@@ -7,7 +7,7 @@ import Weather from "./Weather";
 // import ApiTime from "./ApiTime";
 import "./App.css";
 import APIControlContextProvider from "./APIControl";
-import ControlledDadJokes from "./ControlledDadJokes";
+import ControlledDadJokes from "./controlled/ControlledDadJokes";
 
 const App = () => {
   const [updated, setUpdated] = useState(1);
