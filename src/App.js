@@ -3,8 +3,6 @@ import Clock from "./Clock";
 import ControlledBikes from "./controlled/ControlledBikes";
 import ControlledBusses from "./controlled/ControlledBusses";
 import ControlledWeather from "./controlled/ControlledWeather";
-// import OpeningHours from "./OpeningHours";
-// import ApiTime from "./ApiTime";
 import "./App.css";
 import APIControlContextProvider from "./APIControl";
 import ControlledDadJokes from "./controlled/ControlledDadJokes";
@@ -16,12 +14,10 @@ const App = () => {
   return (
     <APIControlContextProvider>
       <div className="wrapper">
-        {/* <ApiTime /> */}
         <Clock />
         <ControlledBusses />
         <ControlledBikes />
         <ControlledWeather />
-        {/* <OpeningHours /> */}
         <ControlledDadJokes />
       </div>
     </APIControlContextProvider>
