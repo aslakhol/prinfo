@@ -10,41 +10,42 @@ const weatherHourFormat = {
   time: undefined,
   temperature: undefined,
   symbol: { symbol: undefined, id: undefined },
-  precipitation: undefined
+  precipitation: undefined,
 };
 
-const Weather = () => {
+const Weather = (props) => {
   const [weatherApiResponse, setweatherApiResponse] = useState({});
   const [weather, setWeather] = useState({
     now: weatherHourFormat,
     threeHFromNow: weatherHourFormat,
-    sixHFromNow: weatherHourFormat
+    sixHFromNow: weatherHourFormat,
   });
+  const { refresh } = props;
 
   const getWeather = () => {
     fetch(weatherUrl)
-      .then(response => response.json())
-      .then(json => setweatherApiResponse(json))
-      .catch(err => {
+      .then((response) => response.json())
+      .then((json) => setweatherApiResponse(json))
+      .catch((err) => {
         console.error(err);
       });
   };
 
   useEffect(() => {
     getWeather();
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
-    const createWeatherHour = segment => {
+    const createWeatherHour = (segment) => {
       return {
         time: segment[0].to,
         temperature: segment[0].location.temperature.value,
         symbol: segment[1].location.symbol,
-        precipitation: segment[1].location.precipitation.value
+        precipitation: segment[1].location.precipitation.value,
       };
     };
 
-    const createWeather = times => {
+    const createWeather = (times) => {
       const firstTime = DateTime.fromISO(times[0].to);
       const timeInThree = firstTime.plus({ hour: 3 });
       const timeInSix = firstTime.plus({ hour: 6 });
@@ -52,17 +53,17 @@ const Weather = () => {
       const now = createWeatherHour(
         times
           .slice(0, 25)
-          .filter(time => DateTime.fromISO(time.to).equals(firstTime))
+          .filter((time) => DateTime.fromISO(time.to).equals(firstTime))
       );
       const threeHFromNow = createWeatherHour(
         times
           .slice(0, 25)
-          .filter(time => DateTime.fromISO(time.to).equals(timeInThree))
+          .filter((time) => DateTime.fromISO(time.to).equals(timeInThree))
       );
       const sixHFromNow = createWeatherHour(
         times
           .slice(0, 25)
-          .filter(time => DateTime.fromISO(time.to).equals(timeInSix))
+          .filter((time) => DateTime.fromISO(time.to).equals(timeInSix))
       );
       return { now, threeHFromNow, sixHFromNow };
     };

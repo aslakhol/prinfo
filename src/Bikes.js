@@ -3,26 +3,27 @@ import EnturService from "@entur/sdk";
 
 const service = new EnturService({ clientName: "hollund-prinfo" });
 
-const BikeStations = () => {
+const BikeStations = (props) => {
   const [bikeStations, setBikeStations] = useState([]);
+  const { refresh } = props;
 
   useEffect(() => {
     service
       .getBikeRentalStations({ latitude: 63.428311, longitude: 10.392514 }, 230)
-      .then(data => setBikeStations(data));
-  }, []);
+      .then((data) => setBikeStations(data));
+  }, [refresh]);
 
   return (
     <div className="bikes">
       <h2>Bysykkel</h2>
-      {bikeStations.map(station => (
+      {bikeStations.map((station) => (
         <Station key={station.id} station={station} />
       ))}
     </div>
   );
 };
 
-const Station = props => {
+const Station = (props) => {
   const { station } = props;
   return (
     <div className="station">

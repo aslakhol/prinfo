@@ -1,24 +1,23 @@
 import React from "react";
-import OpeningHours from "./OpeningHours";
 import Clock from "./Clock";
-import Bikes from "./Bikes";
-import Busses from "./Busses";
-import Weather from "./Weather";
-import DadJokes from "./DadJokes";
-// import ApiTime from './ApiTime';
+import ControlledBikes from "./controlled/ControlledBikes";
+import ControlledBusses from "./controlled/ControlledBusses";
+import ControlledWeather from "./controlled/ControlledWeather";
+import ControlledDadJokes from "./controlled/ControlledDadJokes";
+import APIControlContextProvider from "./APIControl";
 import "./App.css";
 
 const App = () => {
   return (
-    <div className="wrapper">
-      {/* <ApiTime /> */}
-      <Clock />
-      <Busses />
-      <Bikes />
-      <Weather />
-      <OpeningHours />
-      <DadJokes />
-    </div>
+    <APIControlContextProvider>
+      <div className="wrapper">
+        <Clock />
+        <ControlledBusses />
+        <ControlledBikes />
+        <ControlledWeather />
+        <ControlledDadJokes />
+      </div>
+    </APIControlContextProvider>
   );
 };
 

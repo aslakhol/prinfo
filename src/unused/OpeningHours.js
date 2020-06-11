@@ -17,7 +17,7 @@ const OpeningHours = () => {
   const getHours = () => {
     const request = {
       placeId: placeId,
-      fields: ["opening_hours", "utc_offset_minutes"]
+      fields: ["opening_hours", "utc_offset_minutes"],
     };
 
     /*global google*/

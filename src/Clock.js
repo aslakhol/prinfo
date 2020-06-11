@@ -13,7 +13,7 @@ const Clock = () => {
         {dateTime.toLocaleString({
           weekday: "long",
           day: "numeric",
-          month: "long"
+          month: "long",
         })}
       </h1>
     </div>
