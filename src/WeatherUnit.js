@@ -4,7 +4,8 @@ import { DateTime } from "luxon";
 const WeatherUnit = (props) => {
   if (props.weather) {
     const { symbol, precipitation, temperature, time } = props.weather;
-    const iconUrl = `https://api.met.no/weatherapi/weathericon/1.1/?symbol=${symbol.number}&content_type=image/png`;
+    const symbolNumber = symbol.number ? symbol.number : 1;
+    const iconUrl = `https://api.met.no/weatherapi/weathericon/1.1/?symbol=${symbolNumber}&content_type=image/png`;
     const readableTime = DateTime.fromISO(time).toLocaleString(
       DateTime.TIME_24_SIMPLE
     );
