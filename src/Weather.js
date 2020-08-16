@@ -4,7 +4,7 @@ import { DateTime } from "luxon";
 import WeatherUnit from "./WeatherUnit";
 
 const weatherUrl =
-  "https://api.met.no/weatherapi/locationforecast/1.9/.json?lat=63.428311&lon=10.392514";
+  "https://api.met.no/weatherapi/locationforecast/1.9/.json?lat=63.413716&lon=10.416851";
 
 const weatherHourFormat = {
   time: undefined,
