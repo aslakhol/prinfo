@@ -10,15 +10,15 @@ const Busses = (props) => {
   const [departuresToCenter, setDeparturesToCenter] = useState([]);
   const { refresh } = props;
 
-  const id = "NSR:StopPlace:41613";
+  const id = "NSR:StopPlace:43666";
 
-  const fromCenter = "NSR:Quay:71184";
-  const toCenter = "NSR:Quay:71181";
+  const fromCenter = "NSR:Quay:74952";
+  const toCenter = "NSR:Quay:74954";
 
   const size = 6;
 
   useEffect(() => {
-    service.getStopPlaceDepartures(id).then((data) => setDepartures(data));
+    service.getDeparturesFromStopPlace(id).then((data) => setDepartures(data));
   }, [refresh]);
 
   useEffect(() => {
