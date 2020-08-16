@@ -9,7 +9,13 @@ const BikeStations = (props) => {
 
   useEffect(() => {
     service
-      .getBikeRentalStations({ latitude: 63.428311, longitude: 10.392514 }, 230)
+      .getBikeRentalStations([
+        "YTR:VehicleSharingParkingArea:180",
+        "YTR:VehicleSharingParkingArea:94",
+        "YTR:VehicleSharingParkingArea:133",
+        "YTR:VehicleSharingParkingArea:123",
+        "YTR:VehicleSharingParkingArea:41",
+      ])
       .then((data) => setBikeStations(data));
   }, [refresh]);
 
