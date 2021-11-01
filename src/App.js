@@ -13,7 +13,7 @@ const App = () => {
       <div className="wrapper">
         <Clock />
         <ControlledBusses />
-        <ControlledBikes />
+        {/* <ControlledBikes /> */}
         <ControlledWeather />
         <ControlledDadJokes />
       </div>
